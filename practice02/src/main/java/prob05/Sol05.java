@@ -2,24 +2,55 @@ package prob05;
 
 public class Sol05 {
 	public static void main(String[] arg) {
+	Scanner scanner = new Scanner(System.in);
+		while(true) {
+			// 게임 변수 초기화
+			int minNumber = 1;
+			int maxNumber = 100;
 
-		int array[] = {5, 9, 3, 8, 60, 20, 1};
-		int count = array.length;
+			// 정답 램덤하게 만들기
+			Random random = new Random();
+			int correctNumber = random.nextInt(maxNumber) + minNumber;
 
-		System.out.println("Before Sort.");
+			// 게임 시작
+			int countTry = 0;
+			System.out.println("수를 결정하였습니다. 맞추어 보세요:");
 
-		for (int i = 0; i < count; i++) {
-			System.out.print(array[i] + " ");
+			while(true) {
+				// 시도 회수 증가
+				countTry++;
+
+				// 추측 범위 출력
+				System.out.println(minNumber + "-" + maxNumber);
+				// 입력 프롬프트
+				System.out.print(countTry + ">>");
+
+				// 입력 받기
+				int guessNumber = scanner.nextInt();
+
+				// 정답
+				if(guessNumber == correctNumber) {
+					System.out.println("맞췄습니다.");
+					break;
+				}
+
+				// 오답인 경우
+				if(guessNumber > correctNumber) {
+					System.out.println("더 낮게");
+					maxNumber = guessNumber;
+				} else {
+					System.out.println("더 높게");
+					minNumber = guessNumber;
+				}
+			}
+
+			System.out.print("다시 하시겠습니까?(y/n)>>");
+			String answer = scanner.next();
+			if("y".equals(answer.toLowerCase()) == false) {
+				break;
+			}
 		}
-
-		//
-		// 정렬 알고리즘이 적용된 코드를 여기에 작성합니다.
-		//
-
-		System.out.println("\nAfter Sort.");
-
-		for (int i = 0; i < count; i++) {
-			System.out.print(array[i] + " ");
-		}
+		
+		scanner.close();
 	}
 }
