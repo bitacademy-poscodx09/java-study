@@ -28,6 +28,16 @@ public class GoodsApp {
 		
 		goods.printInfo();
 		
+		// 정보은닉(객체의 상태를 보호)
+		goods.setPrice(-1000);
+		
+		Goods goods2 = new Goods();
+		Goods goods3 = new Goods();
+		// static 변수(클래스 변수)
+		System.out.println(Goods.countOfGoods);
+		
+		goods.setPrice(400000);
+		System.out.println(goods.calcDiscountPrice(0.5f));
 	}
 
 }
