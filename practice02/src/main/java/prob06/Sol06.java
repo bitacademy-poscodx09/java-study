@@ -51,7 +51,7 @@ public class Sol06 {
 
 			System.out.print("다시 하시겠습니까?(y/n)>>");
 			String answer = scanner.next();
-			if("y".equals(answer.toLowerCase()) == false) {
+			if(!"y".equals(answer.toLowerCase())) {
 				break;
 			}
 		}
