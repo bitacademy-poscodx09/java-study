@@ -31,15 +31,31 @@ public class Calculator {
 					add.setValue(lValue, rValue);
 					int result = add.calculate();
 					System.out.println(result);
+					
 					break;
 				}
 				case "-" : {
+					Sub sub = new Sub();
+					sub.setValue(lValue, rValue);
+					int result = sub.calculate();
+					System.out.println(result);
+					
 					break;
 				}
 				case "*" : {
+					Mul mul = new Mul();
+					mul.setValue(lValue, rValue);
+					int result = mul.calculate();
+					System.out.println(result);
+
 					break;					
 				}
 				case "/" : {
+					Div div = new Div();
+					div.setValue(lValue, rValue);
+					int result = div.calculate();
+					System.out.println(result);
+					
 					break;
 				}
 				default :  {

@@ -1,9 +1,6 @@
 package prob02;
 
 public class Goods {
-	public void printInfo() {
-	}
-
 	private String name;
 	private int price;
 	private int countStock;
@@ -31,4 +28,8 @@ public class Goods {
 	public void setCountStock(int countStock) {
 		this.countStock = countStock;
 	}		
+
+	public void printInfo() {
+		System.out.println(name + "(가격:" + price + "원)이 " + countStock + "개 입고 되었습니다.");
+	}
 }

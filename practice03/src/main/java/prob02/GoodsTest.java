@@ -28,7 +28,7 @@ public class GoodsTest {
 		}
 
 		for (Goods g : goods) {
-			System.out.println(g.getName() + "(가격:" + g.getPrice() + "원)이 " + g.getCountStock() + "개 입고 되었습니다.");
+			g.printInfo();
 		}
 
 		scanner.close();
