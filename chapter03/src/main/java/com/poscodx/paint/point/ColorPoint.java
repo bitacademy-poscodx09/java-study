@@ -1,4 +1,4 @@
-package paint;
+package com.poscodx.paint.point;
 
 public class ColorPoint extends Point {
 	private String color;
@@ -21,10 +21,5 @@ public class ColorPoint extends Point {
 	@Override
 	public void show() {
 		System.out.println("Point[x=" + getX() + ", y="+ getY() + ", color=" + color + "]를 그렸습니다.");
-	}
-
-	@Override
-	public void draw() {
-		show();
 	}
 }
