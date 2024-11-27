@@ -15,5 +15,6 @@
 		<module>practice05</module>
 		<module>chapter04</module>
 		<module>designpattern-practices</module>
+		<module>network</module>
 	</modules>
 </project>
