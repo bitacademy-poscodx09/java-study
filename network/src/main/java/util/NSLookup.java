@@ -2,6 +2,7 @@ package util;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.Scanner;
 
 public class NSLookup {
 
