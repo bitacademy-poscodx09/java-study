@@ -1,4 +1,4 @@
-package test;
+package echo;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -7,8 +7,9 @@ import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.SocketException;
 
-public class TCPClient {
-
+public class EchoClient {
+	private static final String SERVER_IP = "192.168.0.211";
+	
 	public static void main(String[] args) {
 		Socket socket = null;
 
@@ -17,7 +18,7 @@ public class TCPClient {
 			socket = new Socket();
 
 			// 2. 서버연결
-			socket.connect(new InetSocketAddress("192.168.0.211", 60000));
+			socket.connect(new InetSocketAddress(SERVER_IP, EchoServer.PORT));
 			
 			// 3. IO Stream 받아오기
 			InputStream is = socket.getInputStream();
@@ -31,16 +32,16 @@ public class TCPClient {
 			byte[] buffer = new byte[256];
 			int readByteCount = is.read(buffer);
 			if(readByteCount == -1) {
-				System.out.println("[client] closed by server");
+				log("closed by server");
 				return;
 			}
 			
 			data = new String(buffer, 0, readByteCount, "utf-8");
-			System.out.println("[client] received:" + data);
+			log("received:" + data);
 		} catch(SocketException e) {
-			System.out.println("[client] Socket Exception" + e);
+			log("Socket Exception" + e);
 		} catch (IOException e) {
-			System.out.println("[client] error:" + e);
+			log("error:" + e);
 		} finally {
 			try {
 				if(socket != null && !socket.isClosed()) {
@@ -51,4 +52,9 @@ public class TCPClient {
 			}
 		}
 	}
+	
+	public static void log(String message) {
+		System.out.println("[Echo client] " + message);
+	}
+
 }
