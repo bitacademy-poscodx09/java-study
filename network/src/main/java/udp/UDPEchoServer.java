@@ -17,16 +17,30 @@ public class UDPEchoServer {
 			socket = new DatagramSocket(PORT);
 			
 			while(true) {
+				// 2. 데이터 수신
 				DatagramPacket rcvPacket = new DatagramPacket(new byte[BUFFER_SIZE], BUFFER_SIZE);
 				socket.receive(rcvPacket);
 				
+				byte[] rcvData = rcvPacket.getData();
+				int offset = rcvPacket.getLength();
 				
+				String message = new String(rcvData, 0, offset, "UTF-8");
+				System.out.println("[UDP Echo Server] received:" + message);
+				
+				// 3. 데이터 송신
+				byte[] sndData = message.getBytes("UTF-8");
+				
+				DatagramPacket sndPacket = new DatagramPacket(
+					sndData,
+					sndData.length,
+					rcvPacket.getAddress(),
+					rcvPacket.getPort());
+				socket.send(sndPacket);
 			}
-			
 		} catch (SocketException e) {
-			System.out.println("[UDP Echo Server error:" + e);
+			System.out.println("[UDP Echo Server] error:" + e);
 		} catch (IOException e) {
-			System.out.println("[UDP Echo Server error:" + e);
+			System.out.println("[UDP Echo Server] error:" + e);
 		} finally {
 			if(socket != null && !socket.isClosed()) {
 				socket.close();
