@@ -6,7 +6,7 @@ class Context {
 	private Subject realSubject;
 	
 	Context() {
-		this(() -> {System.out.println("Subject.doAction in Context done");});
+		this(() -> System.out.println("Subject.doAction in Context done"));
 	}
 	
 	private Context(Subject subject) {
